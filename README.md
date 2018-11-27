@@ -4,8 +4,9 @@ proxy_pool is a fast web crawler for getting free proxy address from Internet.
 It can be used to crawl some web pages with IP proctection policies.
 
 ## requirements
-- python 3.4+
+- python 3.4+, mongodb
 - works on windows,ubuntu
+- Dependent third-party libraries: `flask`,`pymongo`,`lxml`,`aiohttp`
 ## install
 1. copy the files to your local computer
 2. `python run.py`
