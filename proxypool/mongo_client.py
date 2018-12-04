@@ -134,8 +134,7 @@ class MongoClient:
     def get_proxier_for_test(self,size):
         '''
         批量获取proxy地址，提供可用性测试
-        :param start:
-        :param stop:
+        :param size:测试容量大小
         :return:
         '''
         proxies_iter =  self.collection.find().limit(size)

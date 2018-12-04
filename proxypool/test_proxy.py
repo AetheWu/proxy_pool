@@ -54,7 +54,7 @@ class TestProxy:
             if not count:
                 logger.info('代理池为空')
                 return None
-            test_proxies = self.mongo.get_proxier_for_test(size)
+            test_proxies = self.mongo.get_proxier_for_test(count)
             # self.test_proxy(proxy)['proxy']
             loop = asyncio.get_event_loop()
             tasks = [self.test_proxy(proxy['proxy']) for proxy in test_proxies]

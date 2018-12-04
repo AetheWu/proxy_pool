@@ -16,6 +16,7 @@ class GetProxy:
             func = self.crawler.__crawlFunc__[i]
             logger.info('获取代理地址数据集')
             proxies = self.crawler.get_proxy(func)
+            logger.info('数据数量:'+str(len(proxies)))
             logger.info('开始写入数据库...')
             self.mongo.add_many(proxies)
 

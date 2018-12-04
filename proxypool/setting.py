@@ -13,16 +13,16 @@ MONGO_KEY = 'proxy'
 
 #调度器循环周期：
 TEST_CYCLE = 60
-GET_CYCLE = 600
+GET_CYCLE = 20
 API_ENABLED = True
 TEST_ENABLED = True
-GET_ENABLED = True
+GET_ENABLED = False
 
 #测试模块设置
-TEST_URL = 'http://www.baidu.com'
+TEST_URL = 'http://www.bilibili.com'
 BATCH_TEST_SIZE = 20
 VALID_STATUS_CODES = [200]
 
 #页面爬取设置
-STEP_PAGES = 4 #每次爬取的页面数量
-MAX_PAGE = 10 #爬取的最大页数设置
+STEP_PAGES = 10 #每次爬取的页面数量
+MAX_PAGE = 50 #爬取的最大页数设置

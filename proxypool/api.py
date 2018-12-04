@@ -22,8 +22,8 @@ def index():
     return '''
     <h1>代理池</h1>
     <div>
-    <li>代理地址：%s</li>
-    <li>代理数量：%d</li>
+    <li>代理地址: %s</li>
+    <li>代理数量: %d</li>
     </div>
     <br>
     <a href="/">
