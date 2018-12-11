@@ -3,7 +3,12 @@
 import time
 
 from concurrent.futures import ProcessPoolExecutor
+from multiprocessing import Queue,Process,Manager
+from multiprocessing.managers import BaseManager
 
+
+from proxypool.crawl import Crawler
+from proxypool.mongo_client import MongoClient
 from proxypool.proxy_log import logger
 from proxypool.api import app
 from proxypool.get_proxy import GetProxy
@@ -11,13 +16,18 @@ from proxypool.test_proxy import TestProxy
 from proxypool.setting import TEST_CYCLE,GET_CYCLE,API_ENABLED,GET_ENABLED,TEST_ENABLED
 
 class Scheduler():
+    # def __init__(self, get):
+    #     self.getter = getter
+    #     self.tester = tester
     def schedule_get(self, cycle=GET_CYCLE):
         '''
         定时抓取代理地址
         :param cycle:循环周期
         :return:
         '''
-        getter = GetProxy()
+        mongo = MongoClient()
+        crawler = Crawler()
+        getter = GetProxy(crawler,mongo)
         while True:
             logger.info('开始抓取代理')
             getter.run()
@@ -29,7 +39,8 @@ class Scheduler():
         :param cycle:
         :return:
         '''
-        tester = TestProxy()
+        mongo = MongoClient()
+        tester = TestProxy(mongo)
         while True:
             logger.info('开始测试代理')
             tester.run()
@@ -54,6 +65,7 @@ class Scheduler():
         if API_ENABLED:
             pool.submit(fn=self.schedule_api)
 
-
-
+if __name__ == '__main__':
+    sche = Scheduler()
+    sche.run()
 

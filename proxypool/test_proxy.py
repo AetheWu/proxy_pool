@@ -10,8 +10,8 @@ from proxypool.proxy_log import logger
 from proxypool.setting import TEST_URL,VALID_STATUS_CODES,BATCH_TEST_SIZE
 
 class TestProxy:
-    def __init__(self):
-        self.mongo = MongoClient()
+    def __init__(self, mongo):
+        self.mongo = mongo
 
     async def test_proxy(self, proxy):
         '''

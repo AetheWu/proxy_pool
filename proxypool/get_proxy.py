@@ -4,9 +4,9 @@ from proxypool.proxy_log import logger
 from proxypool.setting import POOL_CAPACITY
 
 class GetProxy:
-    def __init__(self):
-        self.crawler = Crawler()
-        self.mongo = MongoClient()
+    def __init__(self, crawler, mongo):
+        self.crawler = crawler
+        self.mongo = mongo
 
     def run(self):
         if self.mongo.count() >= POOL_CAPACITY:
